@@ -16,10 +16,12 @@ class CreateMessagesTable extends Migration
         Schema::create('messages', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedBigInteger('user_id'); 
+            $table->unsignedInteger('forum_id');
             $table->string("content");
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('forum_id')->references('id')->on('forums')->onDelete('cascade');
         });
     }
 

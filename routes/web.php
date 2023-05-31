@@ -18,15 +18,12 @@ Route::get('/', function () {
 })->name('home');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/forum', function () {
-        return view('forum');
-    })->name('forum');
-
     Route::get('/content', function () {
         return view('content');
     })->name('content');
 });
 
+Route::get('/forum', [App\Http\Controllers\ForumController::class, 'index'])->name('forum');
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

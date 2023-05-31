@@ -14,5 +14,6 @@ class Message extends Model
     protected $fillable = [
         'user_id',
         'content',
+        'forum_id',
     ];
 }

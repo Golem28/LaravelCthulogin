@@ -14,5 +14,6 @@ class Forum extends Model
     protected $fillable = [
         'name',
         'abbreviation',
+        'user_id',
     ];
 }

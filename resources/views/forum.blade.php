@@ -11,7 +11,9 @@
             <div class="form-group">
                 <label for="delete">Forum öffnen:</label>
                 <select class="form-control mb-3" id="forum_kuerzel" name="forum_kuerzel">
-                    
+                    @foreach($forums as $forum)
+                        <option value="{{ $forum->abbreviation }}">{{ $forum->name }}</option>
+                    @endforeach
                 </select>
             </div>
             <button type="submit" class="btn btn-primary">Forum öffnen</button>
