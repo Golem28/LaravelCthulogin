@@ -21,18 +21,17 @@
                 <ul class="navbar-nav">
                     @auth
                         <li class="nav-item"><a class="nav-link" href="{{ route('forum') }}">Forum</a></li>
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }}
-                            </a>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('navigator') }}">Navigator</a></li>
 
-                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <form method="POST" action="{{ route('logout') }}">
-                                    @csrf
-                                    <button type="submit" class="dropdown-item">{{ __('Logout') }}</button>
-                                </form>
-                            </div>
+                        <!-- Logout button -->
+                        
+                        <li class="nav-item">
+                            <form id="logout-form" action="{{ url('logout') }}" method="POST">
+                                {{ csrf_field() }}
+                                <button type="submit" class="btn btn-primary">Logout</button>
+                            </form>
                         </li>
+                        
                     @else
                         <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">Registration</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Login</a></li>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use \App\Models\Forum;
+use Illuminate\Support\Facades\Validator;
 
 class ForumController extends Controller
 {
@@ -27,15 +28,27 @@ class ForumController extends Controller
         return view('forum_create');
     }
 
-    public function create($forum_name, $forum_abbreviation){
+    public function create(Request $request){
+        $validator = Validator::make($request->all(), 
+        [ 'forum_name' => 'required', 
+        'forum_abbreviation' => 'required']); 
+
+        if ($validator->fails()) 
+        { 
+            die("Hello");
+            //\Session::flash('warning', 'Please enter the valid details'); return redirect()->back()->withInput()->withErrors($validator);
+        }
+
         // Add a new forum
         $user_id = auth()->user()->id;
 
         $forum = new Forum();
-        $forum->name = $forum_name;
-        $forum->abbreviation = $forum_abbreviation;
+        $forum->name = $request->input('forum_name');
+        $forum->abbreviation = $request->input('forum_abbreviation');
         $forum->user_id = $user_id;
         $forum->save();
+
+        return redirect()->route('forum');
     }
 
     public function delete($forum_id){
@@ -45,6 +58,10 @@ class ForumController extends Controller
 
         if ($forum->user_id == $user_id){
             $forum->delete();
+        } else {
+            return redirect()->back();
         }
+
+        return redirect()->route('forum');
     }
 }
