@@ -1,3 +1,5 @@
+@extends('layouts.template')
+
 @section('title')
     Forum
 @stop
@@ -28,5 +30,3 @@
         </div>
     </div>
 @stop
-
-@include('template')

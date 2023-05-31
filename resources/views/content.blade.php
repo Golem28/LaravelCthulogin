@@ -1,3 +1,5 @@
+@extends('layouts.template')
+
 @section('title')
     Forum
 @stop
@@ -7,5 +9,3 @@
     <p>Hier siehst du das Grauen</p>
 </div>
 @stop
-
-@include('template')
