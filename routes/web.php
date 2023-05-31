@@ -31,8 +31,12 @@ Route::middleware('auth')->group(function () {
 
     // Forum
     Route::get('/forum', [App\Http\Controllers\ForumController::class, 'index'])->name('forum');
+    Route::get('/forum/overview', [App\Http\Controllers\ForumController::class, 'overview'])->name('forum_overview');
     Route::get('/forum/create', [App\Http\Controllers\ForumController::class, 'create'])->name('forum_create');
+
     Route::get('/forum/delete/{forum_id}', [App\Http\Controllers\ForumController::class, 'delete'])->name('forum_delete');
+    Route::get('/forum/edit/{forum_id}', [App\Http\Controllers\ForumController::class, 'edit_forum'])->name('forum_edit');
+    Route::get('/forum/edit_post/{forum_id}', [App\Http\Controllers\ForumController::class, 'edit_forum_post'])->name('forum_edit_post');
     Route::get('/forum/new', [App\Http\Controllers\ForumController::class, 'create_form'])->name('forum_new');
 
     // Messages

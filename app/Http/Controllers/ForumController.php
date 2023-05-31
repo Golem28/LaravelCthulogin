@@ -23,6 +23,53 @@ class ForumController extends Controller
         ]);
     }
 
+    public function overview(){
+        // Get the list of forums
+        $forums = Forum::all();
+
+        // Return the view
+        return view('overview', [
+            'forums' => $forums,
+        ]);
+    }
+
+    public function edit_forum($forum_id){
+        // Get the forum
+        $forum = Forum::find($forum_id);
+
+        // Return the view
+        return view('forum_edit', [
+            'forum' => $forum,
+        ]);
+    }
+
+    public function edit_forum_post($forum_id, Request $request){
+        $validator = Validator::make($request->all(), 
+        [ 'forum_name' => 'required', 
+        'forum_abbreviation' => 'required']); 
+
+        if ($validator->fails()) 
+        { 
+            die("Error");
+            //\Session::flash('warning', 'Please enter the valid details'); return redirect()->back()->withInput()->withErrors($validator);
+        }
+
+        // Edit a forum
+        $user_id = auth()->user()->id;
+
+        $forum = Forum::find($forum_id);
+
+        if ($forum->user_id != $user_id){
+            die("Error");
+        }
+
+        $forum->name = $request->input('forum_name');
+        $forum->abbreviation = $request->input('forum_abbreviation');
+        $forum->save();
+
+        return redirect()->route('forum');
+    }
+
     public function create_form(){
         // Return the view
         return view('forum_create');
