@@ -20,7 +20,6 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav">
                     @auth
-                        <li class="nav-item"><a class="nav-link" href="{{ route('navigator') }}">Browser</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('forum') }}">Forum</a></li>
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
