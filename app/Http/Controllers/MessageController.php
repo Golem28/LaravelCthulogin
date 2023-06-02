@@ -19,8 +19,7 @@ class MessageController extends Controller
 
         if ($validator->fails()) 
         { 
-            die("Error");
-            //\Session::flash('warning', 'Please enter the valid details'); return redirect()->back()->withInput()->withErrors($validator);
+            return redirect()->back()->withErrors($validator)->withInput();
         }
 
         $forum = \App\Models\Forum::find($request->input('forum_id'));
@@ -37,12 +36,11 @@ class MessageController extends Controller
 
     public function create($forum_id, Request $request){
         $validator = Validator::make($request->all(), 
-        [ 'message_content' => 'required']);
+        [ 'message_content' => ['required', 'max:1000']]);
         
         if ($validator->fails()) 
         {
-            die("Error"); 
-            //\Session::flash('warning', 'Please enter the valid details'); return redirect()->back()->withInput()->withErrors($validator);
+            return redirect()->back()->withErrors($validator)->withInput();
         }
 
         // Add a new message

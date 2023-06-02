@@ -7,6 +7,9 @@
 @section('content')
     {{-- Zeigt eine Übersicht an über alle Foren in einer Tabelle die man selber besitzt --}}
 
+    {{-- Bestätigungsskript für das Löschen eines Forums --}}
+    <script src="{{ asset('js/route_on_submit.js') }}"></script>
+
     <div class="container">
         <h1>Übersicht</h1>
         <table class="table table-striped">
@@ -29,7 +32,7 @@
                         <td>
                             <a href="{{ route('messages', ['forum_id' => $forum->id]) }}" class="btn btn-primary">Anzeigen</a>
                             <a href="{{ route('forum_edit', ['forum_id' => $forum->id]) }}" class="btn btn-warning">Bearbeiten</a>
-                            <a href="{{ route('forum_delete', ['forum_id' => $forum->id]) }}" class="btn btn-danger">Löschen</a>
+                            <a href="{{ route('forum_delete', ['forum_id' => $forum->id]) }}" onclick="return confirmSubmit(event, 'Möchtest du das Thema {{$forum->name}} wirklich löschen?')" class="btn btn-danger">Löschen</a>
                         </td>
                     </tr>
                 @endforeach

@@ -45,13 +45,12 @@ class ForumController extends Controller
 
     public function edit_forum_post($forum_id, Request $request){
         $validator = Validator::make($request->all(), 
-        [ 'forum_name' => 'required', 
-        'forum_abbreviation' => 'required']); 
+        [ 'forum_name' => ['required', 'max:255'], 
+        'forum_abbreviation' => ['required', 'max:10']]); 
 
         if ($validator->fails()) 
         { 
-            die("Error");
-            //\Session::flash('warning', 'Please enter the valid details'); return redirect()->back()->withInput()->withErrors($validator);
+            return redirect()->back()->withErrors($validator)->withInput();
         }
 
         // Edit a forum
@@ -82,8 +81,7 @@ class ForumController extends Controller
 
         if ($validator->fails()) 
         { 
-            die("Hello");
-            //\Session::flash('warning', 'Please enter the valid details'); return redirect()->back()->withInput()->withErrors($validator);
+            return redirect()->back()->withErrors($validator)->withInput();
         }
 
         // Add a new forum

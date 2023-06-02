@@ -7,9 +7,12 @@
 @section('content')
     <div class="container">
         <div class="container mt-5">
+            {{-- Bestätigungsskript für das Löschen eines Forums --}}
+            <script src="{{ asset('js/route_on_submit.js') }}"></script>
+
             <!-- Delete Button -->
             <div class="d-flex justify-content-end">
-                <form method="GET" action="{{route('forum_delete', ['forum_id' => $forum->id])}}">
+                <form method="GET" action="{{route('forum_delete', ['forum_id' => $forum->id])}}" onclick="return confirmSubmit(event, 'Möchtest du das Thema {{$forum->name}} wirklich löschen?')">
                     <button type="submit" class="btn btn-outline-danger" id='delete_forum_button'>
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                             <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"></path>
