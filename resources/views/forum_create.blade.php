@@ -5,16 +5,13 @@
 @stop
 
 @section('content')
-    <div class="container">
-        <h1>Themen erstellen</h1>
-        <form method="GET" action="{{ route('forum_create') }}">
-            <div class="form-group">
-                <label for="kuerzel">Kürzel:</label>
-                <input type="text" class="form-control" id="kuerzel" name="forum_abbreviation" placeholder="Kürzel eingeben">
-                <label for="topic">Thema:</label>
-                <input type="text" class="form-control" id="topic" name="forum_name" placeholder="Thema eingeben">
-            </div>
-            <button type="submit" class="btn btn-primary mt-3">Thema erstellen</button>
-        </form>
-    </div>
+    {{-- Erstellungsformular für das Kürzel und den Namen --}}
+    @component('components.forum_edit')
+        @slot('action')
+            {{ route('forum_create') }}
+        @endslot
+        @slot('submit')
+            Thema erstellen
+        @endslot
+    @endcomponent
 @stop

@@ -38,6 +38,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/forum/edit/{forum_id}', [App\Http\Controllers\ForumController::class, 'edit_forum'])->name('forum_edit');
     Route::get('/forum/edit_post/{forum_id}', [App\Http\Controllers\ForumController::class, 'edit_forum_post'])->name('forum_edit_post');
     Route::get('/forum/new', [App\Http\Controllers\ForumController::class, 'create_form'])->name('forum_new');
+    Route::get('/forum/find', [App\Http\Controllers\ForumController::class, 'find'])->name('forum_find');
 
     // Messages
     Route::get('/messages', [App\Http\Controllers\MessageController::class, 'index'])->name('messages');

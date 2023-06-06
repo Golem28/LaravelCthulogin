@@ -69,6 +69,35 @@ class ForumController extends Controller
         return redirect()->route('forum');
     }
 
+    /*
+    *   Find a forum by its abbreviation
+    *   @param $forum_kuerzel The abbreviation of the forum
+    *   @return A list of forums fitting the search
+    */
+    public function find(Request $request){
+        // Validate the input
+        $validator = Validator::make($request->all(), 
+        [ 'forum_kuerzel' => 'required']);
+
+        if ($validator->fails()) 
+        { 
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        // Get the abbreviation
+        $forum_kuerzel = $request->input('forum_kuerzel');
+
+        // Get the forum
+        $forum = Forum::where('abbreviation', 'LIKE', '%' . $forum_kuerzel . '%')->limit(5)->get();
+
+        // Return a list of forums fitting the search
+        return $forum;
+    }
+
+    /*
+    *   Get the creation form
+    *   @return The creation form
+    */
     public function create_form(){
         // Return the view
         return view('forum_create');
