@@ -22,7 +22,7 @@
                 <ul class="navbar-nav">
                     @auth
                         <li class="nav-item"><a class="nav-link" href="{{ route('forum') }}">Forum</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ route('navigator') }}">Navigator</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('userinfos') }}">Nutzerinfos</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('forum_overview') }}">Übersicht</a></li>
 
                         <!-- Logout button -->

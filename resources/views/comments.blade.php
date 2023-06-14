@@ -37,7 +37,22 @@
 
                     <div class="chat border p-3" id="message-container">
                         @foreach ($messages as $message)
-                            <div class="message">
+                            @component ('components.message')
+                                @slot('content')
+                                    {{$message->content}}
+                                @endslot
+                                @slot('name')
+                                    {{$message->name}}
+                                @endslot
+                                @slot('created_at')
+                                    {{$message->created_at}}
+                                @endslot
+                                @slot('route')
+                                    {{route('messages_delete', ['forum_id' => $forum->id, 'message_id' => $message->id])}}
+                                @endslot
+                            @endcomponent
+
+                            {{-- <div class="message">
                                 <div class="message-header">
                                     <div class="message-author">
                                         <span class="message-author-name">{{$message->name}}</span>
@@ -56,7 +71,7 @@
                                     {{$message->content}}
                                 </div>
                                 
-                            </div>
+                            </div> --}}
                         @endforeach
                     </div>
 

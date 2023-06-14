@@ -18,7 +18,6 @@ Route::get('/', function ()
     return view('content');
 });
 
-
 Route::middleware('auth')->group(function () {
     Route::get('/content', function () {
         return view('content');
@@ -28,6 +27,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/navigator', function () {
         return view('navigator');
     })->name('navigator');
+
+    // User Infos
+    Route::get('/userinfos', function () {
+        return view('userinfos');
+    })->name('userinfos');
 
     // Forum
     Route::get('/forum', [App\Http\Controllers\ForumController::class, 'index'])->name('forum');

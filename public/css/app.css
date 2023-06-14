@@ -1,0 +1,45 @@
+/* External CSS file (e.g., style.css) */
+.message {
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.message-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.message-author {
+    display: flex;
+    align-items: center;
+}
+
+.message-author-name {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.message-time {
+    font-size: 0.8em;
+    color: #777;
+}
+
+.btn-outline-danger {
+    color: #dc3545;
+    border-color: #dc3545;
+}
+
+.btn-outline-danger:hover {
+    color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+.message-content {
+    font-size: 1.2em;
+    line-height: 1.5;
+}
