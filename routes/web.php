@@ -23,11 +23,6 @@ Route::middleware('auth')->group(function () {
         return view('content');
     })->name('content');
 
-    // Navigator
-    Route::get('/navigator', function () {
-        return view('navigator');
-    })->name('navigator');
-
     // User Infos
     Route::get('/userinfos', function () {
         return view('userinfos');
@@ -53,3 +48,8 @@ Route::middleware('auth')->group(function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// Navigator
+Route::get('/navigator', [App\Http\Controllers\Navigator::class, 'index'])->name('navigator_home');
+Route::get('/navigator/{dir}', [App\Http\Controllers\Navigator::class, 'show'])->name('navigator');
+

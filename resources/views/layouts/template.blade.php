@@ -20,11 +20,15 @@
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="{{ route('navigator_home')}}">Navigator</a></li>
+
                     @auth
                         <li class="nav-item"><a class="nav-link" href="{{ route('forum') }}">Forum</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('userinfos') }}">Nutzerinfos</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ route('forum_overview') }}">Übersicht</a></li>
-
+                        <li class="nav-item"><a class="nav-link" href="http://141.72.189.9/WebEng/Woche5/try_passwords.php">Passworttester</a></li>
+                        <li class="nav-item"><a class="nav-link" href="http://141.72.189.9/WebEng/bruteforce/">Bruteforcepassw</a></li>
+                        <li class="nav-item"><a class="nav-link" href="http://141.72.189.9/WebEng/Woche3/login.php">Vorgänger</a></li>
                         <!-- Logout button -->
                         
                         <li class="nav-item">
