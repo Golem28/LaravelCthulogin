@@ -31,8 +31,10 @@
                         <td>{{ $forum->updated_at }}</td>
                         <td>
                             <a href="{{ route('messages', ['forum_id' => $forum->id]) }}" class="btn btn-primary">Anzeigen</a>
-                            <a href="{{ route('forum_edit', ['forum_id' => $forum->id]) }}" class="btn btn-warning">Bearbeiten</a>
-                            <a href="{{ route('forum_delete', ['forum_id' => $forum->id]) }}" onclick="return confirmSubmit(event, 'Möchtest du das Thema {{$forum->name}} wirklich löschen?')" class="btn btn-danger">Löschen</a>
+                            @if ($forum->user_id == auth()->user()->id)
+                                <a href="{{ route('forum_edit', ['forum_id' => $forum->id]) }}" class="btn btn-warning">Bearbeiten</a>
+                                <a href="{{ route('forum_delete', ['forum_id' => $forum->id]) }}" onclick="return confirmSubmit(event, 'Möchtest du das Thema {{$forum->name}} wirklich löschen?')" class="btn btn-danger">Löschen</a>
+                            @endif
                         </td>
                     </tr>
                 @endforeach
